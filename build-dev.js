@@ -21,6 +21,7 @@ var metalsmith = require('metalsmith'),
     bower = require('./bowerassets.js'),
     moment = require('moment'),
     nunjucks = require('nunjucks'),
+    copyDirFiles = require('./copyDirFiles'),
     dateFilter = require('./datefilter');
 
 
@@ -207,6 +208,8 @@ metalsmith(__dirname)
     }))
   .use(ignore('**/\.DS_Store'))
   .use(bower({path:'./assets'}))
+  // copy locally stored images
+  .use(copyDirFiles('data/images','build/media'))
   .build(function (err, files) {
     if (err) {
       console.log(err);
