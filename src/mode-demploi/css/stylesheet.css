@@ -1,0 +1,475 @@
+@import "fonts.css"; 
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+body{
+  font-size: 21px;
+  text-align: left;
+  text-align-last: left;
+}
+
+header{
+  position: fixed;
+  top:0;
+  left:0;
+  width: 20%;
+}
+
+header h1{
+  margin: 0; 
+  font-size:20px;
+  text-transform: uppercase;
+  padding: 20px; 
+  color: #000 !important;
+
+}
+
+.menu{
+  color: #FFF;
+  font-family: var(--font-title);
+}
+
+.menu ul {
+  margin: 0;
+  padding-left: 0;
+}
+
+.menu ul li {
+  margin: 0;
+}
+
+.menu ul li a{
+  color:#FFF;
+}
+
+
+
+.menu ul.level-1{
+  padding: 3px 10px;
+}
+
+.menu ul.level-1.part-2 .level-2 li.active, .menu ul.level-1.part-2 .level-2 li a:hover{
+  text-decoration: underline;
+}
+
+.menu ul.level-1 > li{
+  font-size: 28px;
+}
+
+.menu ul.level-2{
+  display: none;
+}
+
+.menu ul.level-2.active{
+  display: block;
+}
+
+.menu ul.level-2 > li{
+  font-size: 20px;
+}
+
+.menu ul.level-3{
+  display: none;
+  padding-left: 20px;
+}
+
+.menu ul.level-3.active{
+  display: block;
+}
+
+.menu ul.level-3 > li{
+  font-size: 16px;
+}
+
+.menu ul.level-3 li a:hover, .menu ul.level-3 > li.active{
+  text-decoration: underline;
+}
+
+.menu li::before{
+  content:none;
+}
+
+.menu .intro{
+  background: #000;
+}
+
+.menu .part-1{
+  background: var(--pantone-one);
+}
+
+.menu .part-2{
+  background: var(--pantone-two);
+}
+
+.menu .part-3{
+  background: var(--pantone-three);
+}
+
+
+
+.content-p, .content-ul, .content-li, ul, li, ul li{
+  font-size: 21px;
+  line-height: 1.4;
+  hyphens: none;
+  word-spacing: 0;
+  margin: 20px 0;
+  text-align: left;
+  text-align-last: left;
+} 
+
+.intro .content-p,
+.intro .content-ul,
+.intro .content-li,
+.intro a, 
+.intro h1,
+.intro h2, 
+.intro h3, 
+.intro h4,
+.intro h5,
+.intro h6,
+.intro blockquote, 
+.intro .plus, 
+.intro .contents-container h1, 
+.intro .contents-container h2{
+  color: #000;
+}
+
+.part-1 .content-p,
+.part-1 .content-ul,
+.part-1 .content-li,
+.part-1 a, 
+.part-1 h1,
+.part-1 h2, 
+.part-1 h3, 
+.part-1 h4,
+.part-1 h5,
+.part-1 h6,
+.part-1 blockquote,
+.part-1 figcaption, 
+.part-1 .plus, 
+.part-1 .contents-container h1, 
+.part-1 .contents-container h2{
+  color: var(--pantone-one);
+}
+
+.part-2 .content-p,
+.part-2 .content-ul,
+.part-2 .content-li,
+.part-2 a, 
+.part-2 h1,
+.part-2 h2, 
+.part-2 h3, 
+.part-2 h4,
+.part-2 h5,
+.part-2 h6, 
+.part-2 blockquote,
+.part-2 figcaption,
+.part-2 .plus, 
+.part-2 .contents-container h1, 
+.part-2  .contents-container h2{
+  color: var(--pantone-two);
+}
+
+.part-3 .content-p,
+.part-3 .content-ul,
+.part-3 .content-li,
+.part-3 a, 
+.part-3 h1,
+.part-3 h2, 
+.part-3 h3, 
+.part-3 h4,
+.part-3 h5,
+.part-3 h6, 
+.part-3 blockquote,
+.part-3 figcaption,
+.part-3 .plus, 
+.part-3 .contents-container h1, 
+.part-3  .contents-container h2{
+  color: var(--pantone-three);
+}
+
+.footnote{
+  position: absolute;
+  font-size: 0.7em;
+  line-height: 1.4;
+  right: 50px;
+  width: 15%;
+  min-width: 120px;
+  background: #FFF;
+  color: rgba(0,0,0,0.8);
+}
+
+.footnote a{
+  color: rgba(0,0,0,0.8);
+}
+
+.planche .content-figure, .planche .content-p.figure-caption-content{
+  width: 45%;
+}
+
+.content-figure, .content-p.figure-caption-content{
+  width: 100%;
+  margin: 0;
+}
+
+figcaption, .contents-container figcaption, .contents-container figcaption p{
+  font-size: 0.6em;
+}
+
+.part-1 .content-figure .content-figure-wrapper{
+  background: var(--pantone-one);
+}
+
+.part-2 .content-figure .content-figure-wrapper, .controverse .content-figure figure{
+  background: var(--pantone-two);
+}
+
+.part-3 .content-figure .content-figure-wrapper{
+  background: var(--pantone-three);
+}
+
+.content-figure-wrapper, figure, .controverse figure{
+  outline: none;
+}
+
+
+blockquote{
+  font-size: 0.8em;
+  line-height: 1.4;
+}
+
+
+.contents-container h1 {
+  text-align: center;
+  font-size: 2em;
+  font-family: 'HKGrotesk';
+  font-weight: 600;
+  margin-top: 15%;
+  margin-bottom: 6%;
+  padding-bottom: 0%;
+  text-align-last: center; 
+}
+
+.contents-container h2 {
+  text-align: left;
+  font-size: 1.4em;
+  font-family: 'HKGrotesk';
+  font-weight: 600;
+  margin-bottom: 0%;
+  padding-bottom: 2%;
+}
+
+.contents-container h2 + .content-p{
+  margin-top: 0;
+}
+
+h2.edition-block-title, h3.edition-block-subtitle{
+  text-align: center; 
+  margin-left:0;
+  text-align-last: center;
+}
+
+h2.edition-block-title{
+  font-size: 4.3em;
+  line-height: 1.2;
+}
+
+h3.edition-block-subtitle{
+  font-size: 1.5em;
+  line-height: 1.2;
+  margin-top: 30px;
+}
+
+h2.edition-block-title + .content-p, h3.edition-block-subtitle + .content-p{
+  margin-top: 40px;
+}
+
+
+.edition-block {
+  margin:auto;
+  width: 52%;
+  min-width: 380px;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  background: #FFF;
+}
+
+/* planche d'images */
+.planche{
+  width: 100%;
+  margin: 0;
+}
+
+/* article footer */
+.article-footer{
+  margin: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 52%;
+  min-width: 380px;
+  margin-bottom: 100px;
+  background: #FFF;
+}
+
+.download-article{
+  /*background: #000;*/
+  /*padding: 4px 20px;*/
+  text-align: center; 
+  /*display: inline-block;*/
+}
+
+.download-article a{
+  /*color: #FFF;*/
+  font-weight:bold;
+  text-align: center; 
+}
+
+.download-arrow{
+  width: 30px;
+  display: inline-block;
+  /*font-size: 15px;*/
+}
+
+.dowload-arrow img{
+  width:100%;
+}
+
+.navigation-wrapper{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.navigation-inner a{
+  display: flex;
+  align-items: center;
+}
+
+.navigation-title{
+  font-family: var(--font-title);
+}
+
+.fleche{
+  margin:20px;
+  font-size: 60px;
+  font-weight:normal;
+  color: var(--gris);
+}
+
+/*.article-footer{
+  padding-bottom: 4%;
+  margin-left: 25%;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.article-footer .article-footer-inner{
+  display: flex;
+  align-items: center;
+  color:  var(--gris);
+}
+*/
+
+.plus{
+  position: absolute;
+  z-index: -1;
+  font-weight: lighter;
+  color: #000; 
+  font-size: 15px;
+}
+
+/* ----------------- HOME ------------------------------*/
+
+#container-homescreen{
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+#defaultCanvas0{
+  position: absolute; 
+  z-index: -1; 
+  top:-10px;
+  left:-20px;
+}
+
+.citation {
+  z-index: 4;
+  position: absolute;
+  left: 15px;
+  bottom: 50px;
+  font-family: 'YoungSerif';
+  font-size: 6.5vw;
+  line-height: 1.2;
+  color: var(--gris);
+}
+
+.citation span{
+  background-color: var(--fond);
+}
+
+.arrow-bottom{
+  font-size: 40px;
+  background-color: var(--gris);
+  display: block;
+  position: absolute; 
+  bottom: 8%;
+  right: 5%;
+  line-height: 1;
+  padding: 0px 10px 5px 10px;
+}
+
+.arrow-bottom a {
+  text-decoration: none;
+  color: #FFF;
+}
+
+#container-menu-pres {
+  position: relative; 
+  display: flex; 
+}
+
+
+.menu-home {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 21%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  padding-top: 60px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.content{
+  padding-top: 60px;
+  margin-left: 33%;
+  width: 50%;
+  margin-bottom: 300px;
+}
+
+.content h1{
+  font-family: var(--font-title);
+  margin-top: 0;
+  text-transform: uppercase;
+  font-size: 2em;
+  text-align: center; 
+}
+
+
+.presentation{
+  font-size: 1em;
+  width: 100%;
+}
+
