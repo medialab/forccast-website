@@ -20,7 +20,8 @@ var metalsmith = require('metalsmith'),
     bower = require('./bowerassets.js'),
     moment = require('moment'),
     nunjucks = require('nunjucks'),
-    dateFilter = require('./datefilter');
+    dateFilter = require('./datefilter'),
+    fs = require('fs-extra');
 
 
 var env = nunjucks.configure('layouts', {watch: false,  noCache: true})
@@ -196,12 +197,14 @@ metalsmith(__dirname)
     directory: 'layouts'
   }))
   .use(ignore('**/\.DS_Store'))
+  .use(ignore('mode-demploi'))
   .use(bower({path:'./assets'}))
   .build(function (err, files) {
     if (err) {
       console.log(err);
     }
     else {
+      fs.copySync('src/mode-demploi', 'build/mode-demploi')
       console.log("ok");
     }
   });
