@@ -198,7 +198,8 @@ metalsmith(__dirname)
     directory: 'layouts'
   }))
   .use(ignore('**/\.DS_Store'))
-  .use(ignore('mode-demploi*'))
+  .use(ignore('mode-demploi'))
+  .use(ignore('mode-demploi-teaser'))
   .use(bower({path:'./assets'}))
   .build(function (err, files) {
     if (err) {
@@ -206,7 +207,7 @@ metalsmith(__dirname)
     }
     else {
       if (fs.existsSync("build/mode-demploi")) {
-        fs.rmdirSync("build/mode-demploi", { recursive: true });
+        fs.removeSync("build/mode-demploi");
       }
       fse.copySync('src/mode-demploi-teaser', 'build/mode-demploi');
       console.log("ok");
