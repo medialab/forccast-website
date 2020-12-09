@@ -197,9 +197,11 @@ metalsmith(__dirname)
     pattern: '**/*.html',
     directory: 'layouts'
   }))
-  .use(ignore('**/\.DS_Store'))
-  .use(ignore('mode-demploi'))
-  .use(ignore('mode-demploi-teaser'))
+  .ignore([
+      '**/\.DS_Store',
+      '**/mode-demploi',
+      '**/mode-demploi-teaser'
+  ])
   .use(bower({path:'./assets'}))
   .build(function (err, files) {
     if (err) {
