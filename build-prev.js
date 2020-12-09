@@ -204,7 +204,7 @@ metalsmith(__dirname)
       console.log(err);
     }
     else {
-      fs.copySync('src/mode-demploi', 'build/mode-demploi')
+      fs.copySync('src/mode-demploi-teaser', 'build/mode-demploi')
       console.log("ok");
     }
   });
