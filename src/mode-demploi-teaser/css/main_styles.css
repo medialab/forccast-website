@@ -1,0 +1,764 @@
+/* ------------------------- I M P O R T ---------------------------- */
+
+@import 'variables.css';
+
+
+/* ------------------------- MAIN STYLE ---------------------------- */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body{
+	font-family: "HK Grotesk", sans-serif;
+	font-size: 11pt;
+	text-align: justify;
+	text-align-last: left;
+	/*-webkit-hyphens: auto;*/
+}
+
+img{
+	width: 100%;
+	display: block;
+}
+
+h1 {
+  font-family: var(--font-title);
+  font-size: var(--size-title);
+  text-align: left;
+}
+
+/*permet d'envoyer cet élément dans le titre courant*/
+/*h2.edition-block-title {string-set: title content(text) }
+h3.edition-block-title {string-set: subtitle content(text) }*/
+/*h4.edition-block-title {string-set: subtitle content(text) }*/
+
+h1, h2, h3, h4, h5, h6{
+	font-family: "YoungSerif", serif;
+	text-align: left;
+	font-weight:normal;
+}
+
+ul li{
+	list-style: none;
+	line-height:13.5pt;
+ 	margin-bottom: 13.5pt;
+	text-align: justify;
+	hyphens: auto;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+}
+
+ul > li > ul {
+	padding-left: 3mm;
+}
+
+ul > li > ul > li::before{
+	content: "+";
+	margin-left: -3mm;
+	margin-right: 1mm;
+}
+
+ol{
+	padding-left: 3mm;
+}
+
+
+ol li{
+	list-style: none;
+	line-height:13.5pt;
+ 	margin-bottom: 13.5pt;
+	text-align: justify;
+	hyphens: auto;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+}
+
+ol > li > ol {
+	padding-left: 3mm;
+}
+
+ol > li::before{
+	content: "+";
+	font-weight: bold;
+	margin-left: -3mm;
+	margin-right: 1mm;
+}
+
+u{
+	text-decoration: none;
+}
+
+a{
+	text-decoration: none;
+	color: var(--noir);
+}
+
+blockquote{
+	text-align: justify; 
+	margin-right: 0;
+	font-size: 9.5pt;
+	line-height: 13.5pt;
+	margin-top: 0;
+	/*margin-top: 13.5pt;*/
+	margin-bottom: 13.5pt;
+}
+
+/*.content-p blockquote{
+	margin-top: 13.5pt;
+}*/
+
+.small-caps{
+	font-variant-caps: all-small-caps;
+}
+
+.dont-display{
+	/*opacity: 0;*/
+}
+
+
+sup, sub {
+  vertical-align: top;
+  position: relative;
+  top: -0.4em;
+  font-size: 7pt;
+}
+
+sub { 
+  top: 0.4em; 
+}
+
+.small-caps + sup{
+	font-size: 7pt;
+}
+
+/*	font-size: 7pt;
+	pointer-events: none;
+	margin-left: 0.02cm;
+	vertical-align: top;
+	position: relative;
+	top:-1px;
+	margin-right: -1px;
+	font-weight: bold;*/
+
+/* tentative de résoudre le bug des hyphens last qui ne se coupent pas d'une page à l'autre */
+.pagedjs_area .content-p:last-child, .pagedjs_area .content-li:last-child{
+	text-align-last: justify;
+}
+
+.pagedjs_area .content-p.last-align-left, .pagedjs_area .content-li.last-align-left{
+	text-align-last: left;
+}
+
+.pagedjs_area .content-p.last-align-right{
+	text-align-last: right;
+}
+
+
+/* ------------ GENERAL PRINT ------------  */
+@page {
+  size: 165mm 205mm;
+  /*marks: crop; */
+
+  /*numéro de page*/
+  @bottom-right {
+   content: counter(page);
+   font-size: 9pt;
+   font-weight: bold;
+   text-align: right;
+   float: right;
+ 	}
+
+ 	/*titre courant*/
+ 	@bottom-left {
+ 		content: '';
+    font-size: 9pt;
+   	font-weight: bold;
+  }
+}
+
+@page :left {
+  margin: 10mm 8.5mm 18mm 50mm;
+}
+
+@page :right {
+  margin: 10mm 10mm 18mm 50mm;
+}
+
+
+@page:blank{
+	@bottom-right {
+   content: none;
+ 	}
+
+ 	@bottom-left {
+ 		content: none;
+ 	}
+}
+
+/* ------------ FIN GENERAL PRINT ------------  */
+
+
+/* ------------------ GÉNÉRAL ---------------  */
+/* ajouter une classe break pour faire un page break ?*/
+.break-before{
+	page-break-before: always;
+}
+
+/* titre des articles */
+.edition-block-title{
+	break-before: right;
+	font-size: var(--size-title);
+	margin: 0;
+	margin-left: -40mm;
+	hyphens: none;
+	line-height: 1.16;
+}
+
+.edition-block-subtitle{
+	margin: 0;
+	margin-left: -40mm;
+	font-size: 14pt;
+	margin-top: 2mm;
+}
+
+.edition-block-title + div > .contents-container{
+	margin-top: 1.95cm;
+}
+
+.edition-block-subtitle + div > .contents-container{
+	margin-top: 1.55cm;
+}
+
+h3 + .tableofcontents-block-title + div > .contents-container{
+	margin-top: 1.37cm;
+}
+
+.tableofcontents-block-title{
+	/*break-after: always;*/
+}
+
+/* container de texte */
+.contents-container{
+ /*margin-top: 1.55cm;*/
+}
+
+/* titres dans le texte */
+.contents-container h1,
+.contents-container h2,
+.contents-container h3,
+.contents-container h4{
+	font-size: 11pt;
+	page-break-after: avoid;
+	hyphens: none;
+}
+
+.contents-container h1{
+	font-size: 18pt;
+	margin-top:33pt;
+	margin-bottom: 10.25pt;
+	margin-left: 7mm;
+	line-height: 1.2;
+}
+
+
+/*.contents-container h1:first-child{
+	margin-top: 0;
+}*/
+
+.contents-container .content-p + h1:first-child{
+	margin-top:40.5pt;
+}
+
+.contents-container h1::before{
+	content:"+";
+	margin-right: 0.22cm;
+	margin-left: -7mm;
+}
+
+.contents-container h2{
+	margin-left: 7mm;
+	margin-bottom:0;
+}
+
+.contents-container h2::before{
+	content:"++";
+	margin-right: 0.32cm;
+	margin-left: -7mm;
+}
+
+.contents-container h2:first-child{
+	margin-top: 0;
+}
+
+.contents-container .content-p + h2:first-child{
+	margin-top:27pt;
+}
+
+.contents-container h1 + .contents-container h2{
+	margin-top: 13.5pt; 
+}
+
+/*.contents-container h2 + .contents-container .content-p{
+	margin-top: 0;
+}*/
+
+.content-p +  h2, .content-atomic-container + h2, .content-ul + h2{
+	margin-top: 27pt;
+}
+
+.contents-container .content-p + blockquote{
+	margin-bottom: 13.5pt;
+}
+
+
+/*h2 + .content-p{
+	margin-top: 0 !important;
+}*/
+
+/*.contents-container h1 + .content-p{
+	margin-top: 2mm;
+}
+
+.contents-container h2 + .content-p{
+	margin-top: 5pt;
+}*/
+
+.contents-container h1:first-child{
+		margin-top: -2.5mm;
+/*		margin-bottom: -0.75pt;*/
+}
+.contents-container .content-p:first-child{
+	margin-top: 0px;
+}
+.contents-container .content-p:last-child{
+	margin-bottom: 0px;
+}
+/* marge sur les paragraphes */
+.content-p {
+	hyphens: auto;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	margin: 13.5pt 0;
+	line-height: 13.5pt;
+	word-spacing: 0.02ch
+}
+
+/* ------------ FIN GÉNÉRAL ------------  */
+
+
+/* ------------ GENERAL LIST ------------  */
+.content-ul{
+	/*padding-left: 1cm;*/
+	hyphens: auto;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	padding-left: 0;
+	margin: 0 0 13.5pt 0;
+	line-height: 13.5pt;
+}
+
+.content-p .content-ul{
+	margin-top: 13.5pt ;
+}
+
+.content-ul li{
+	margin-bottom: 13.5pt;
+
+}
+
+.content-ul li::before{
+	content:"+";
+	margin-right: 0.2cm;
+	font-weight: bold;
+}
+
+/* ------------ GENERAL IMAGES ------------  */
+figure{
+	margin:0;
+	box-sizing: border-box;
+}
+
+.content-atomic-container + .content-atomic-container{
+	margin-top: 27pt;
+}
+
+.content-figure{
+	margin:0;
+	width: 130%;
+	margin-left: -30%;
+	page-break-inside: avoid;
+	box-sizing: border-box;
+}
+
+/*.content-figure .fig-portrait{
+	width: 60%;
+	margin-left: 33%;
+}*/
+
+.content-figure figure{
+  /*margin: 13.5pt 0;*/
+  margin: 0;
+  display: inline-grid;
+  box-sizing: border-box;
+}
+
+.content-figure-wrapper, .controverse figure{
+	outline: 4px solid #FFF;
+  outline-offset: -2px;
+}
+
+.content-figure img {
+  mix-blend-mode: screen;
+  /*filter: grayscale(100%) contrast(110%) brightness(115%);*/
+  filter: contrast(110%) brightness(115%);
+  opacity: 1;
+  box-sizing: border-box;
+}
+
+figcaption .figure-caption-content > div, 
+figcaption .figure-caption-content > p{
+	display: inline;
+}
+
+.figure-caption-authors::before{
+	content: ", ";
+	margin-left: -0.6mm;
+
+}
+
+.figure-caption-source::before{
+	content: ", ";
+	margin-left: -0.6mm;
+}
+
+figcaption{
+	padding: 1mm 0;
+	line-height: 1.3;
+	hyphens: none;
+  /*margin-top: -2mm;*/
+}
+
+figcaption,
+.contents-container figcaption,
+.contents-container figcaption p {
+	font-family: var(--font-text);
+	font-size: 6pt;
+	margin:0;
+	text-align: left;
+}
+
+figcaption sup,
+.contents-container figcaption sup{
+	font-size: 4pt;
+	top:0;
+}
+
+.figure-caption-description{
+	display: none;
+}
+
+/* ----------- PLANCHE D'IMAGES --------------- */
+.planche{
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	page-break-before: always;
+	page-break-after: always;
+	width: 140%;
+	margin-left: -37.5%;
+}
+
+.planche .content-figure{
+	margin:0;
+	margin-bottom: 0.5cm;
+	margin-right: 0.5cm;
+	margin-left: 0.5cm;
+	page-break-inside: avoid;
+}
+
+.planche .content-figure-wrapper,
+.planche .content-figure img{
+	vertical-align: top;
+}
+
+
+.planche .content-figure.fig-landscape{
+	width: 6cm;
+}
+
+.planche .content-figure.fig-square{
+	width: 6cm;
+}
+
+.planche .content-figure.fig-portrait{
+	width: 3.8cm;
+}
+
+/*.planche .content-figure .fig-landscape + figcaption{
+	width: 8cm;
+}
+
+.planche .content-figure .fig-portrait + figcaption{
+	width: 5cm;
+}*/
+
+/* ----------- TRAME PLUS --------------- */
+.plus{
+	position: absolute;
+}
+
+/* -----------  TITRE COURANT ----------- */
+.pagedjs_margin-bottom-left{
+	margin-left: -40mm;
+	width: 13cm;
+}
+
+/* ----------- FOOTNOTES ----------- */
+
+.footnote {
+	/*width: 150px;*/
+	/*position:absolute;*/
+	/*top: var(--pagedjs-margin-top);*/
+	word-break: break-word;
+	padding-right: 4mm;
+	padding-left: 8.5mm;
+	line-height: 1.35;
+	font-size: 8pt;
+	text-align: left;
+	margin-top: -4mm;
+	hyphens: manual;
+	font-family: "HK Grotesk", sans-serif;
+	font-weight: normal;
+	top: auto;
+	/*margin-top: -3.7mm;*/
+
+}
+
+.footnote-ref{
+	text-decoration: none;
+	pointer-events: none;
+}
+
+.footnote-ref sup{
+	font-size: 7pt;
+	pointer-events: none;
+	margin-left: 0.02cm;
+	vertical-align: top;
+	position: relative;
+	top:-1px;
+	margin-right: -1px;
+	font-weight: bold;
+	/*font-family: sans-serif;*/
+}
+
+.footnote-p sup{
+	font-size: 5pt;
+	top:0;
+}
+
+.note-call_footnote-p{
+	display: none;
+}
+
+.note-pointer{
+	font-size: 7pt;
+	pointer-events: none;
+	font-weight: bold;
+	/*vertical-align: bottom;*/
+	margin-right: 4px;
+}
+
+
+/* ----------- RESSOURCES --------------- */
+
+.ressources-title,.glossary h2,.references h2,.table-of-figures h2  {
+	page-break-before: always;
+ /*width:140%;*/
+ /*margin-left:-37.5%;*/
+ margin-top:0;
+ font-size: 11pt;
+/* column-span: all;*/
+ margin-bottom: 1em;
+}
+
+.ressources-title.no-break{
+	page-break-before: avoid !important;
+}
+
+.content-p + .ressources-wrapper{
+	margin-top: 40.5pt;
+}
+
+
+.contents-container h1.ressources-title, .contents-container h1.ressources{
+	margin-left: 0;
+	/*margin-bottom: 1cm;*/
+	margin-bottom: 13.5pt;
+	/*margin-top: 40.5pt;*/
+}
+
+.contents-container h1.ressources-title::before, .contents-container h1.ressources::before{
+	content:none;
+	margin:0;
+}
+
+.contents-container h2.ressources-title::before, .contents-container h2.ressources::before{
+	content:none;
+	margin:0;
+}
+
+.glossary h2,.references h2,.table-of-figures h2{
+	margin-left:-37.5%;
+
+}
+.ressources-wrapper, .figures-list {
+/* column-count:2;
+ column-gap:1cm;*/
+/* column-fill:auto;*/
+/* margin-left:-37.5%;*/
+ padding:0;
+ line-height:13.5pt;
+/* grid-template-columns: repeat(2, 1fr);
+	grid-column-gap: 1cm;
+	grid-row-gap: 1cm;*/
+/* column-span : none;*/
+ /*height: 17cm;*/
+}
+
+.ressources-wrapper h2{
+	margin-left:0;
+	margin-bottom: 0.5cm;
+}
+
+.ressources-wrapper h2::before{
+	content:none;
+	margin:0;
+}
+
+.ressources-wrapper ul, .ressources-wrapper .content-p{
+	margin-top: 0;
+	word-break: break-word;
+  padding: 0;
+}
+
+.ressources li:first-child, .figures-list li:first-child {
+	margin-top:0
+}
+.ressources li, .figures-list li {
+	margin:13.5pt 0 13.5pt 0;
+/*	-webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+	break-inside: avoid*/;
+	break-inside: avoid-column;
+}
+
+/* ----------- INTERPAGES --------------- */
+/* page avant de commencer un article*/
+.pagedjs_right_page ~ .pagedjs_blank_page{
+	/*background: var(--pantone-three);*/
+	/*background: #FFF;*/
+	position: relative;
+	/*background: #ACACAC;*/
+}
+
+.pagedjs_right_page ~ .pagedjs_blank_page .plus{
+	color: #FFF;
+	/*color: var(--pantone-three);*/
+	font-size: 11pt;
+}
+
+/* interpages partie noir*/
+.part-noir{
+   page: part-noir;
+}
+
+.pagedjs_part-noir_first_page, 
+.pagedjs_part-noir_page.pagedjs_blank_page{
+	background: var(--noir);
+	position: relative;
+}
+
+.pagedjs_part-noir_first_page .plus,
+.pagedjs_part-noir_page.pagedjs_blank_page .plus{
+	color: #FFF;
+}
+
+/*.pagedjs_part-noir_page.pagedjs_right_page ~ .pagedjs_blank_page{
+	background: var(--noir);
+}*/
+
+/* fixed bug table of contents */
+.part-noir .tableofcontents-block-title{
+	display: none;
+	page-break-after: avoid;
+	break-after: avoid;
+}
+.pagedjs_part-noir_page h2.edition-block-title {string-set: blacktitle content(text) }
+
+@page part-noir{
+  @bottom-left {
+    content: string(blacktitle);
+  }
+
+}
+
+
+ /* INTERPAGES TITRE PARTIE */
+.titre-partie h2.edition-block-title{
+	font-size:46pt;
+	margin:0 0 0 -4px;
+	font-weight: normal;
+	color: #FFF;
+	position: absolute;
+	top: -0.30cm;
+	left: -4cm;
+	text-transform: uppercase;
+	text-align: center;
+	text-align-last: center;
+}
+
+/* Mise en page du sommaire des thématiques*/
+.tableofcontents-block-title{
+	font-size: 18pt;
+	font-weight: 400;
+	color: #FFF;
+	width: 100%;
+	position: absolute;
+	z-index: 101;
+	bottom: -1cm;
+	left: -5cm;
+	width: 155mm;
+	text-align: center;
+	text-align-last: center;
+	letter-spacing: 0.02em;
+	/*break-after: always;*/
+	margin:1px;
+	 /*font-family: 'YoungSerif';*/
+}
+
+.tableofcontents-block-title li{
+	/* display: inline-block;*/
+	text-align: center;
+	margin-left: 0mm;
+	margin-right: 1mm;
+	margin-bottom: 3mm;
+	line-height: 1.1;
+}
+
+.tableofcontents-block-title li::before{
+	content:' +';
+	font-weight:800;
+	font-family: var(--font-text);
+	margin-right:4px;
+}
+
+.fiches .tableofcontents-block-title{
+	break-after: avoid;
+}
+
+
+
+
+
