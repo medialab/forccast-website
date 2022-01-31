@@ -20,7 +20,7 @@ $(document).ready(function(){
   // });
 
   // Version floutée — pour ne pas avoir accès à tous les contenus
-  disableContent(); 
+//  disableContent(); 
   
   function disableContent(){
     $(".disable").css('overflow', 'hidden');
